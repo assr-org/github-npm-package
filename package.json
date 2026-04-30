@@ -1,0 +1,10 @@
+{
+  "name": "@ajaychinthapalli/github-npm-package",
+  "version": "1.0.0",
+  "description": "My first GitHub Package",
+  "main": "index.js",
+  "files": ["index.js"],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
