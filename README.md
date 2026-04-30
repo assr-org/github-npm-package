@@ -1,3 +1,4 @@
+```
 bash-3.2$ npm run dev
 
 > pkg-monitor-agent@1.0.0 dev
@@ -16,3 +17,4 @@ bash-3.2$ npm run dev
 👂 Listening for package publish events...
 
 💓 {"name":"pkg-monitor-agent","running":true,"startedAt":"2026-04-30T16:24:05.774Z","uptime":"5s","processed":0,"errors":0,"stats":{"total":0,"revoked":0,"failed":0,"byRepo":{},"byActor":{},"byRegistry":{}}}
+```
