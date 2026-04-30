@@ -1,1 +1,7 @@
-# github-npm-package
+
+pkg-monitor-agent — Flow Overview
+The agent operates as a continuous listener across the GitHub organization, intercepting every package publish event regardless of which of the 120k repositories triggered it.
+Event entry. Every package publish fires a webhook from GitHub to the agent's POST /webhook endpoint. The first thing the agent does is verify the request's HMAC SHA-256 signature against the configured webhook secret — any request that fails this check is rejected immediately with a 401. Valid requests receive a 200 response right away, before any processing begins, because GitHub requires a response within 10 seconds.
+Processing. Once the 200 is sent, the agent evaluates the event asynchronously. It checks two things in order — is the actor a bot, and is the source repository in the approved allowlist. If either is true the event is silently ignored. If neither is true, it is flagged as a violation.
+Automated response. On a violation the agent executes three actions: it calls the GitHub Packages API to revoke the published version, opens a tracked issue in the audit repository with full details and a remediation checklist, and records the violation in the in-memory store for querying.
+Query API. The agent exposes four read endpoints for on-demand inspection — GET /health for agent status and live stats, GET /violations for recent violations with an optional time window, and filtered views by actor or repository for targeted investigation.
